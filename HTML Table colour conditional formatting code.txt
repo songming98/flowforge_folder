@@ -1,0 +1,89 @@
+<style type="text/css">
+    .tg {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    .tg td {
+        border-color: black;
+        border-style: solid;
+        border-width: 1px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        overflow: hidden;
+        padding: 10px 5px;
+        word-break: normal;
+    }
+
+    .tg th {
+        border-color: black;
+        border-style: solid;
+        border-width: 1px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        overflow: hidden;
+        padding: 10px 5px;
+        word-break: normal;
+    }
+/*
+:root 
+{   
+    --main-bg-color: purple;
+}
+    .tg .tg-0lax {
+    text-align: left;
+    vertical-align: top;
+    background-color: var(--main-bg-color);
+    }
+*/
+
+
+    .high-value 
+    {
+      background-color: red; /* Apply red background for high values */
+    }
+
+    .low-value 
+    {
+      background-color: green; /* Apply green background for low values */
+    }
+
+    .other-value
+    {
+    background-color: yellow; /* Apply yellow background for low values */
+    }
+</style>
+
+<script>
+    var cells = document.getElementsByClassName('tg-0lax');
+
+  for (var i = 0; i < cells.length; i++) {
+    var cell = cells[i];
+    var cellValue = cell.innerText.trim();   // var cellValue = parseFloat(cell.innerText);
+
+    if (cellValue === 'down' || cellValue === 'lost') 
+    {
+      cell.classList.add('high-value');
+    } 
+    else if (cellValue === 'run') 
+    {
+      cell.classList.add('low-value');
+    } 
+    else 
+    {
+      cell.classList.add('other-value');
+    }
+  }
+</script>
+
+<table class="tg">
+    <thead>
+        <tr>
+            <td class="tg-0lax">run</td>
+            <td class="tg-0lax">down</td>
+            <td class="tg-0lax">lost</td>
+            <td class="tg-0lax">test</td>
+        </tr>
+    </thead>
+</table>

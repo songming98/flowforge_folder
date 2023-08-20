@@ -1,0 +1,122 @@
+[
+    {
+        "id": "53979dfa1e33e344",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "067ba11d06056d75",
+        "type": "function",
+        "z": "53979dfa1e33e344",
+        "name": "function 3",
+        "func": "var payload_lost = msg.lost;\nvar payload_run = msg.run;\nvar payload_test = msg.test;\n\n\nvar all_payload = [payload_lost, payload_run, payload_test];\nvar colour_Class = [];\n\nfor (var i = 0; i < all_payload.length; i++) \n{\n    var loop_payload = all_payload[i];\n    var colour_array = \"white-value\";\n\n    if (loop_payload === 'lost' || loop_payload === 'down') \n    {\n        colour_array = \"red-value\";\n    } \n    else if (loop_payload === 'run')\n    {\n        colour_array = \"green-value\";\n    }\n    else \n    {\n        colour_array = \"yellow-value\";\n    }\n    colour_Class.push(colour_array);  //append result to array\n}\n\nmsg.colour = colour_Class;\n    \n    return msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 140,
+        "wires": [
+            [
+                "b6a31722af8bbd89",
+                "c266ad230946af50"
+            ]
+        ]
+    },
+    {
+        "id": "aa6818957c1e7898",
+        "type": "inject",
+        "z": "53979dfa1e33e344",
+        "name": "",
+        "props": [
+            {
+                "p": "lost",
+                "v": "lost",
+                "vt": "str"
+            },
+            {
+                "p": "run",
+                "v": "run",
+                "vt": "str"
+            },
+            {
+                "p": "test",
+                "v": "test",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 140,
+        "wires": [
+            [
+                "067ba11d06056d75"
+            ]
+        ]
+    },
+    {
+        "id": "b6a31722af8bbd89",
+        "type": "debug",
+        "z": "53979dfa1e33e344",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "c266ad230946af50",
+        "type": "ui_template",
+        "z": "53979dfa1e33e344",
+        "group": "5c982f2f58fc9130",
+        "name": "",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "format": "<style type=\"text/css\">\n    .tg {\n        border-collapse: collapse;\n        border-spacing: 0;\n    }\n\n    .tg td {\n        border-color: black;\n        border-style: solid;\n        border-width: 1px;\n        font-family: Arial, sans-serif;\n        font-size: 14px;\n        overflow: hidden;\n        padding: 10px 5px;\n        word-break: normal;\n    }\n\n    .tg th {\n        border-color: black;\n        border-style: solid;\n        border-width: 1px;\n        font-family: Arial, sans-serif;\n        font-size: 14px;\n        font-weight: normal;\n        overflow: hidden;\n        padding: 10px 5px;\n        word-break: normal;\n    }\n\n\n    .white-value\n    {\n    background-color: white;\n    }\n\n    .red-value \n    {\n      background-color: red; \n    }\n\n    .green-value \n    {\n      background-color: green; \n    }\n\n    .yellow-value\n    {\n    background-color: yellow;\n    }\n\n</style>\n\n\n<table class=\"tg\">\n    <thead>\n        <tr>\n            <td class=\"{{msg.colour[0]}}\">{{msg.lost}}</td>\n            <td class=\"{{msg.colour[1]}}\">{{msg.run}}</td>\n            <td class=\"{{msg.colour[2]}}\">{{msg.test}}</td>\n            <td class=\"abc\">down</td>\n        </tr>\n    </thead>\n</table>\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 540,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5c982f2f58fc9130",
+        "type": "ui_group",
+        "name": "indexer",
+        "tab": "ef3966503bb31fb7",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ef3966503bb31fb7",
+        "type": "ui_tab",
+        "name": "zzz",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
